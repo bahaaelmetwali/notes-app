@@ -20,7 +20,7 @@ class NotesViewBody extends StatelessWidget {
               contentPadding: EdgeInsets.all(6),
               title: Text(
                 'Flutter tips',
-                style: TextStyle(color: Colors.black, fontSize: 24),
+                style: TextStyle(color: Colors.black, fontSize: 20),
               ),
 
               subtitle: Padding(
@@ -39,7 +39,7 @@ class NotesViewBody extends StatelessWidget {
                 child: Icon(
                   FontAwesomeIcons.trash,
                   color: Colors.black,
-                  size: 20,
+                  size: 18,
                 ),
               ),
             )),

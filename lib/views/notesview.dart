@@ -15,7 +15,6 @@ class Notesview extends StatelessWidget {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
         onPressed: () {
           showModalBottomSheet(
-  
             context: context,
             builder: (context) {
               return Showmodalcontent();
@@ -27,11 +26,11 @@ class Notesview extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(8.0),
 
-        child: Column(
+        child: const Column(
           children: [
-            SizedBox(height: 26),
-            Customappbar(),
-            SizedBox(height: 2),
+            SizedBox(height: 30),
+            Customappbar(icon: Icons.search, title: 'Notes'),
+
             NotesListview(),
           ],
         ),

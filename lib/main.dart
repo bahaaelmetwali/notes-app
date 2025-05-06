@@ -5,8 +5,10 @@ import 'package:notes_app/models/notemodel.dart';
 import 'package:notes_app/views/editnoteview.dart';
 import 'package:notes_app/views/notesview.dart';
 
-void main() async{
+void main() async {
   await Hive.initFlutter();
+
+  Hive.registerAdapter(NotemodelAdapter());
   await Hive.openBox<Notemodel>(KNotes);
   runApp(const Notes_App());
 }

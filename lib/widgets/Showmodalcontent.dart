@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:notes_app/widgets/custombutton.dart';
-import 'package:notes_app/widgets/customtextfield.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import 'package:notes_app/cubits/cubit/addnotecubit_cubit.dart';
+import 'package:notes_app/widgets/addnote.dart';
 
 class Showmodalcontent extends StatelessWidget {
   const Showmodalcontent({super.key});
@@ -9,58 +11,23 @@ class Showmodalcontent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(10),
-      child: SingleChildScrollView(child: noteaddition()),
-    );
-  }
-}
-
-class noteaddition extends StatefulWidget {
-  const noteaddition({super.key});
-
-  @override
-  State<noteaddition> createState() => _noteadditionState();
-}
-
-class _noteadditionState extends State<noteaddition> {
-  GlobalKey<FormState> globalKey = GlobalKey();
-  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
-  String? title, content;
-
-  @override
-  Widget build(BuildContext context) {
-    return Form(
-      key: globalKey,
-      autovalidateMode: autovalidateMode,
-      child: Column(
-        children: [
-          const SizedBox(height: 25),
-          Customtextformfield(
-            hint: 'Title',
-            onsaved: (value) {
-              title = value;
-            },
-          ),
-          const SizedBox(height: 25),
-          Customtextformfield(
-            hint: 'Content',
-            maxlines: 4,
-            onsaved: (value) {
-              content = value;
-            },
-          ),
-          const SizedBox(height: 30),
-          Customutton(
-            ontap: () {
-              if (globalKey.currentState!.validate()) {
-                globalKey.currentState!.save();
-              } else {
-                autovalidateMode = AutovalidateMode.always;
-                setState(() {});
-              }
-            },
-          ),
-          const SizedBox(height: 25),
-        ],
+      child: SingleChildScrollView(
+        child: BlocConsumer<AddnotecubitCubit, AddnotecubitState>(
+          listener: (context, state) {
+            if (state is AddnotecubitSucess) {
+              Navigator.pop(context);
+            }
+            if (state is AddnotecubitFailure) {
+              print('error is${state.errormessage}');
+            }
+          },
+          builder: (context, state) {
+            return ModalProgressHUD(
+              inAsyncCall: state is AddnotecubitLoading ? true : false,
+              child: noteaddition(),
+            );
+          },
+        ),
       ),
     );
   }

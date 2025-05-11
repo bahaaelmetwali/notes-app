@@ -11,23 +11,21 @@ class Showmodalcontent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(10),
-      child: SingleChildScrollView(
-        child: BlocConsumer<AddnotecubitCubit, AddnotecubitState>(
-          listener: (context, state) {
-            if (state is AddnotecubitSucess) {
-              Navigator.pop(context);
-            }
-            if (state is AddnotecubitFailure) {
-              print('error is${state.errormessage}');
-            }
-          },
-          builder: (context, state) {
-            return ModalProgressHUD(
-              inAsyncCall: state is AddnotecubitLoading ? true : false,
-              child: noteaddition(),
-            );
-          },
-        ),
+      child: BlocConsumer<AddnotecubitCubit, AddnotecubitState>(
+        listener: (context, state) {
+          if (state is AddnotecubitSucess) {
+            Navigator.pop(context);
+          }
+          if (state is AddnotecubitFailure) {
+            print('error is${state.errormessage}');
+          }
+        },
+        builder: (context, state) {
+          return ModalProgressHUD(
+            inAsyncCall: state is AddnotecubitLoading ? true : false,
+            child: SingleChildScrollView(child: noteaddition()),
+          );
+        },
       ),
     );
   }

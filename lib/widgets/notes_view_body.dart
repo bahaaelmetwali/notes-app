@@ -25,7 +25,7 @@ class NotesViewBody extends StatelessWidget {
                 contentPadding: EdgeInsets.all(6),
                 title: Text(
                   'Flutter tips',
-                  style: TextStyle(color: Colors.black, fontSize: 20),
+                  style: TextStyle(color: Colors.black, fontSize: 30),
                 ),
 
                 subtitle: Padding(
@@ -34,7 +34,7 @@ class NotesViewBody extends StatelessWidget {
                     'Build Your career with Tharwat Samy',
                     style: TextStyle(
                       color: Colors.black.withAlpha((0.5 * 255).toInt()),
-                      fontSize: 16,
+                      fontSize: 22,
                     ),
                   ),
                 ),
@@ -44,7 +44,7 @@ class NotesViewBody extends StatelessWidget {
                   child: Icon(
                     FontAwesomeIcons.trash,
                     color: Colors.black,
-                    size: 18,
+                    size: 24,
                   ),
                 ),
               )),
@@ -54,7 +54,7 @@ class NotesViewBody extends StatelessWidget {
                   'May21,2022',
                   style: TextStyle(
                     color: Colors.black.withAlpha((0.5 * 255).toInt()),
-                    fontSize: 10,
+                    fontSize: 16,
                   ),
                 ),
               ),

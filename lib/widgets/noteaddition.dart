@@ -34,30 +34,35 @@ class _noteadditionState extends State<noteaddition> {
           const SizedBox(height: 25),
           Customtextformfield(
             hint: 'Content',
-            maxlines: 4,
+            maxlines: 5,
             onsaved: (value) {
               content = value;
             },
           ),
-          const SizedBox(height: 30),
-          Customutton(
-            ontap: () {
-              if (globalKey.currentState!.validate()) {
-                globalKey.currentState!.save();
-                var note = Notemodel(
-                  title: title!,
-                  content: content!,
-                  color: Colors.amberAccent.value,
-                  date: DateTime.now().toString(),
-                );
-                BlocProvider.of<AddnotecubitCubit>(context).addnote(note);
-              } else {
-                autovalidateMode = AutovalidateMode.always;
-                setState(() {});
-              }
+          const SizedBox(height: 25),
+          BlocBuilder<AddnotecubitCubit, AddnotecubitState>(
+            builder: (context, state) {
+              return Customutton(
+                isLoading: state is AddnotecubitLoading,
+                ontap: () {
+                  if (globalKey.currentState!.validate()) {
+                    globalKey.currentState!.save();
+                    var note = Notemodel(
+                      title: title!,
+                      content: content!,
+                      color: Colors.amberAccent.value,
+                      date: DateTime.now().toString(),
+                    );
+                    BlocProvider.of<AddnotecubitCubit>(context).addnote(note);
+                  } else {
+                    autovalidateMode = AutovalidateMode.always;
+                    setState(() {});
+                  }
+                },
+              );
             },
           ),
-          const SizedBox(height: 25),
+          const SizedBox(height: 15),
         ],
       ),
     );

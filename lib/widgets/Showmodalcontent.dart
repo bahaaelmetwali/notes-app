@@ -23,9 +23,9 @@ class Showmodalcontent extends StatelessWidget {
             }
           },
           builder: (context, state) {
-            return AbsorbPointer(
+            return  AbsorbPointer(
               absorbing: state is AddnotecubitLoading ? true : false,
-              child: SingleChildScrollView(child: noteaddition()),
+              child: const  SingleChildScrollView(child: noteaddition()),
             );
           },
         ),

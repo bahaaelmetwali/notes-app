@@ -9,7 +9,7 @@ class Customutton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: ontap,
-      child: Container(
+      child:  Container(
         height: 55,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(6),
@@ -19,8 +19,8 @@ class Customutton extends StatelessWidget {
         child: Center(
           child:
               isLoading
-                  ? CircularProgressIndicator(color: Colors.black)
-                  : Text(
+                  ? const  CircularProgressIndicator(color: Colors.black)
+                  : const  Text(
                     'Add',
                     style: TextStyle(color: Colors.black, fontSize: 18),
                   ),

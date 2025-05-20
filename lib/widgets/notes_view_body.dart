@@ -42,10 +42,15 @@ class NotesViewBody extends StatelessWidget {
 
                 trailing: Padding(
                   padding: EdgeInsets.only(bottom: 30),
-                  child: Icon(
-                    FontAwesomeIcons.trash,
-                    color: Colors.black,
-                    size: 24,
+                  child: GestureDetector(
+                    onTap: () {
+                      note.delete();
+                    },
+                    child: Icon(
+                      FontAwesomeIcons.trash,
+                      color: Colors.black,
+                      size: 24,
+                    ),
                   ),
                 ),
               )),

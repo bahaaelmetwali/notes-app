@@ -16,7 +16,7 @@ class NotesViewBody extends StatelessWidget {
       },
       child: Container(
         decoration: BoxDecoration(
-          color: Color(0xffffcd7a),
+          color:Color(note.color),
           borderRadius: BorderRadius.circular(8),
         ),
         child: Padding(

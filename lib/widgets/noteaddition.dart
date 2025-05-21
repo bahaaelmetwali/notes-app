@@ -67,7 +67,10 @@ class _noteadditionState extends State<noteaddition> {
                     var note = Notemodel(
                       title: title!,
                       content: content!,
-                      color: Colors.amberAccent.value,
+                      color:
+                          BlocProvider.of<AddnotecubitCubit>(
+                            context,
+                          ).color.value,
                       date:
                           DateFormat(
                             'd-MMMM-yyyy',
@@ -88,4 +91,3 @@ class _noteadditionState extends State<noteaddition> {
     );
   }
 }
-

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app/cubits/cubit/addnotecubit_cubit.dart';
 import 'package:notes_app/models/notemodel.dart';
+import 'package:notes_app/widgets/colorslistview.dart';
 import 'package:notes_app/widgets/custombutton.dart';
 import 'package:notes_app/widgets/customtextfield.dart';
 import 'package:intl/intl.dart';
@@ -53,7 +54,9 @@ class _noteadditionState extends State<noteaddition> {
               content = value;
             },
           ),
-          const SizedBox(height: 25),
+          SizedBox(height: 15),
+          ColorsListView(),
+          const SizedBox(height: 15),
           BlocBuilder<AddnotecubitCubit, AddnotecubitState>(
             builder: (context, state) {
               return Customutton(
@@ -85,3 +88,4 @@ class _noteadditionState extends State<noteaddition> {
     );
   }
 }
+

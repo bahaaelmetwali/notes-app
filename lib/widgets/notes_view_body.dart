@@ -12,7 +12,7 @@ class NotesViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, Editnoteview.id);
+        Navigator.pushNamed(context, Editnoteview.id,arguments: note);
       },
       child: Container(
         decoration: BoxDecoration(

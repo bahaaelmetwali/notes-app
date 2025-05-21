@@ -28,6 +28,12 @@ class _noteadditionState extends State<noteaddition> {
           const SizedBox(height: 25),
           Customtextformfield(
             hint: 'Title',
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'This field is required';
+              }
+              return null;
+            },
             onsaved: (value) {
               title = value;
             },
@@ -35,7 +41,14 @@ class _noteadditionState extends State<noteaddition> {
           const SizedBox(height: 25),
           Customtextformfield(
             hint: 'Content',
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'This field is required';
+              }
+              return null;
+            },
             maxlines: 5,
+
             onsaved: (value) {
               content = value;
             },

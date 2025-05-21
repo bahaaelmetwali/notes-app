@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app/cubits/cubit/addnotecubit_cubit.dart';
+import 'package:notes_app/cubits/cubit/notes_cubit.dart';
 import 'package:notes_app/widgets/noteaddition.dart';
 
 class Showmodalcontent extends StatelessWidget {
@@ -13,6 +14,8 @@ class Showmodalcontent extends StatelessWidget {
       child: BlocConsumer<AddnotecubitCubit, AddnotecubitState>(
         listener: (context, state) {
           if (state is AddnotecubitSucess) {
+                BlocProvider.of<NotesCubit>(context).fetchAllnotes();
+
             Navigator.pop(context);
           }
           if (state is AddnotecubitFailure) {

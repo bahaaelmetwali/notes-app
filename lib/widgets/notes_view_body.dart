@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:notes_app/cubits/cubit/notes_cubit.dart';
 import 'package:notes_app/models/notemodel.dart';
 import 'package:notes_app/views/editnoteview.dart';
 
@@ -45,6 +47,8 @@ class NotesViewBody extends StatelessWidget {
                   child: GestureDetector(
                     onTap: () {
                       note.delete();
+                          BlocProvider.of<NotesCubit>(context).fetchAllnotes();
+
                     },
                     child: Icon(
                       FontAwesomeIcons.trash,
